@@ -1,0 +1,68 @@
+#! /usr/bin/python
+""" Script to scrape the national rail website for train times 
+
+
+Example
+-------
+To look at train times from Southampton airport parkway to Waterloo
+in an hour call the script with:
+
+GetTrainTimes --from SOA --to WAT --time-offset=60
+
+"""
+import urllib2
+from BeautifulSoup import BeautifulSoup
+import datetime
+import argparse
+
+def strip_tags(item):
+    return item.text
+
+def stringtime_to_datetime(string):
+    """ Convert 08:59 to datetime """
+    [hour, minute] = string.split(":")
+    return datetime.datetime(now.year, now.month, now.day, 
+                             hour=int(hour), minute=int(minute))
+
+def journey_duration(dep, arr):
+    dep_dt = stringtime_to_datetime(dep)
+    arr_dt = stringtime_to_datetime(arr)
+    dur_secs = (arr_dt - dep_dt).total_seconds()
+    dur_mins = dur_secs / 60.0
+    return int(dur_mins)
+
+# Get command line arguments
+parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0],
+                                 )
+parser.add_argument("-f", "--from", dest="FROM_STATION", default='WAT', type=str, 
+                    help="Station of departure")
+parser.add_argument("-t", "--to", dest="TO_STATION", default="BSK", type=str, 
+                    help="Station of arrival")
+parser.add_argument("-d", "--time-offset", dest="TIME_OFFSET", default=15, 
+                    help="Specifies a time offset past now to look for train times")
+        
+args = parser.parse_args()                 
+
+now = datetime.datetime.now()
+then = now - datetime.timedelta(minutes=args.TIME_OFFSET)
+
+string_time = "/{:02.0f}{:02.0f}".format(then.hour, then.minute)
+
+URL = ('http://ojp.nationalrail.co.uk/service/timesandfares/'+
+       '{}/{}/today/'.format(args.FROM_STATION, args.TO_STATION) + 
+       '{}/dep#outwardJump'.format(string_time)
+        )
+
+soup = BeautifulSoup(urllib2.urlopen( URL).read())
+
+departures = [strip_tags(i) for i in soup.findAll("td", { "class" : "dep" })]
+arrivals = [strip_tags(i) for i in soup.findAll("td", { "class" : "arr" })]
+
+# Print the results
+print "Train times from {} to {}".format(args.FROM_STATION, args.TO_STATION)
+print "Departs   Arrives   Takes"
+for dep, arr in zip(departures, arrivals):
+    print "{}     {}     {}  ".format(dep, arr, journey_duration(dep, arr))
+
+# Check for delays
+#lates = soup.findAll("td", { "class" : "journey-status journey-status-on-late" })
