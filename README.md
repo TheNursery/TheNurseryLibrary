@@ -9,18 +9,24 @@ the script ignore this and follow instructions.
 
 # Instructions
 
-* To clone the repo:
+To clone the repo:
 
-```
-$ git clone https://github.com/TheNursery/TheNurseryLibrary.git
-$ cd TheNurseryLibrary/
-```
-
-* If you want to add your own script
-
-```
-$ git add myscript.sh myotherscript.sh
-$ git commit -m "Adds myscript which does .. "
+```sh
+git clone https://github.com/TheNursery/TheNurseryLibrary.git
+cd TheNurseryLibrary/
 ```
 
-* You could also modify other peoples scripts using this. 
+If you want to add your own script
+
+```sh
+git add myscript.sh myotherscript.sh
+git commit -m "Adds myscript which does .. "
+```
+
+To push the changed to the remote repo you need to [create a git hub account](https://github.com/)
+then ask any of the current contributors to add you. Once you have the access simply push your commit by
+
+```sh
+git push origin master
+``` 
+This will ask your username and password (of your github account) 
