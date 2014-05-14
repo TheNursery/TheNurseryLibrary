@@ -1,0 +1,14 @@
+#!/bin/bash
+while true; do
+insult=$[($RANDOM %4)]
+if [ $insult -eq 0 ]; then
+espeak -z -a 200 -ven-us+m7 "Do Some Work, Asshole" --stdout | paplay 
+elif [ $insult -eq 1 ]; then
+espeak -z -a 200 -ven-us+m7 "Do Some Work, Ball bag" --stdout | paplay 
+elif [ $insult -eq 2 ]; then
+espeak -z -a 200 -ven-us+m7 "Why aren't you working!" --stdout | paplay 
+elif [ $insult -eq 3 ]; then
+espeak -z -a 200 -ven-us+m7 "Fucking do some work" --stdout | paplay 
+fi
+sleep $[($RANDOM %100)]
+done
