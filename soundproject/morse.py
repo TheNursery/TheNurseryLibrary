@@ -40,16 +40,10 @@ class Morse:
 
 
     def dot(self):
-        int_str_dot, pac_str_dot = self.tone(self.dot_length)
-        int_str_space, pac_str_space = self.space(self.dot_length)
-
-        return int_str_dot + int_str_space, pac_str_dot + pac_str_space
+        return self.tone(self.dot_length) + self.space(self.dot_length)
 
     def dash(self):
-        int_str_dash, pac_str_dash = self.tone(self.dash_length)
-        int_str_space, pac_str_space = self.space(self.dot_length)
-
-        return int_str_dash + int_str_space, pac_str_dash + pac_str_space
+        return self.tone(self.dash_length) + self.space(self.dot_length)
 
     def lspace(self):
         return self.space(self.lspace_len)
@@ -62,8 +56,7 @@ class Morse:
         period = int(self.framerate / self.freq)
         
         length = length - length%period
-        
-        int_vals = []
+
         pac_vals = []
 
         for i in range(length):
@@ -72,25 +65,20 @@ class Morse:
                                (float(i%period)/float(self.framerate))))
             pv = struct.pack('h', val)
             pac_vals.append(pv)
-            int_vals.append(str(val))
 
-        int_valstr = ''.join(int_vals)
         pac_valstr = ''.join(pac_vals)
-        return int_valstr, pac_valstr
+        return pac_valstr
 
     def space(self, length):
 
-        int_vals = []
         pac_vals = []
 
         for i in range(length):
             pv = struct.pack('h', 0)
             pac_vals.append(pv)
-            int_vals.append(str(0))
 
-        int_valstr = ''.join(int_vals)
         pac_valstr = ''.join(pac_vals)
-        return int_valstr, pac_valstr
+        return pac_valstr
 
     def getMorse(self, output_string, debug=False):
 
@@ -100,21 +88,21 @@ class Morse:
 
         for char in output_string:
             if char.isspace():
-                i, packed_value = self.wspace()
+                packed_value = self.wspace()
                 values.append(packed_value)
                 if (debug): print char
             else:
                 morse_str = self.MORSE_DICT[char];
                 for dd in morse_str:
                     if dd == '-':
-                        i, packed_value = self.dash()
+                        packed_value = self.dash()
                     elif dd == '.':
-                        i, packed_value = self.dot()
+                        packed_value = self.dot()
                     else:
                         print 'character not understood:', dd
                         break
                     values.append(packed_value)
-                i, packed_value = self.lspace()
+                packed_value = self.lspace()
                 values.append(packed_value)
                 if (debug): print char, morse_str
 
