@@ -1,0 +1,317 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+\usepackage{beamerthemeshadow}
+\usepackage{caption}
+\usepackage{tikz}
+\captionsetup{labelformat=empty,labelsep=none}
+\usecolortheme{lily}
+\usetheme{Dresden}
+
+\usepackage{animate}
+\definecolor{darkgreen}{rgb}{0,0.7,0.4}
+
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+
+\title[Simulating the shattering of the neutron star
+  crust \hspace{225pt} \insertframenumber/\inserttotalframenumber\quad]
+{Simulating the shattering of the neutron star crust} 
+\author{Stephanie J. Erickson}
+\institute[University of Southampton]{University of Southampton}
+\date{10 July 2013} 
+
+\begin{frame}
+\titlepage
+\begin{center}
+{ \small
+see C. Gundlach, I. Hawke, and SJE, CQG \textbf{29} 015055 (2012)
+}
+\addtocounter{framenumber}{-1}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Motivation}
+\begin{frame}\frametitle{Astrophysical motivation}
+\begin{itemize}
+\item NS has crust
+\item Various mechanisms break crust: spindown, magnetic fields, tidal forces
+\item Crust can break via \emph{shattering} or \emph{cracking}
+\item Starquakes can have observable effects: precursors to short-hard
+  GRB's, pulsar glitches
+\end{itemize}
+Goal: Investigate dynamics of neutron star quakes
+\end{frame}
+
+\begin{frame}\frametitle{2D toy model}
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{figure}
+  \includegraphics[width=0.8\textwidth]{figures/toyfinal}
+\end{figure}
+\end{column}
+\begin{column}{0.6\textwidth}
+Technical aspects:
+\begin{itemize}
+\item Elasticity
+\item Interfaces
+\item Starquakes
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Elasticity}
+\begin{frame}\frametitle{Elasticity formulation}
+\begin{figure}
+	\includegraphics[height=0.47\textheight]{figures/block.pdf}
+\end{figure}
+\begin{itemize}
+\item Map $\chi : $ spacetime $\rightarrow$ matter-space
+\item Integrability conditions give conservation law for $d\chi$
+\item System of conservation laws: mass, momentum, energy +
+  \emph{crystal structure}
+\end{itemize}
+\begin{center}
+{ \small
+\textbf{see Carsten Gundlach's talk at 18:15 on Friday}
+}
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Elasticity formulation}
+\begin{figure}
+	\includegraphics[height=0.47\textheight]{figures/elasticity_v2.pdf}
+\end{figure}
+\begin{itemize}
+\item Map $\chi : $ spacetime $\rightarrow$ matter-space
+\item Integrability conditions give conservation law for $d\chi$
+\item System of conservation laws: mass, momentum, energy +
+  \emph{crystal structure}
+\end{itemize}
+\begin{center}
+{ \small
+\textbf{see Carsten Gundlach's talk at 18:15 on Friday}
+}
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Elasticity results}
+\begin{columns}[c]
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+\item Newtonian limit of our relativistic
+  code matches published Newtonian Riemann tests
+\item 2D tests match 1D tests and exact solutions
+  where available
+\item 2D cylindrical coordinates demonstrates that we can
+  use a general metric
+\end{itemize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{figure}
+  \animategraphics[width=0.75\textwidth, trim=0pt 0pt 0pt 0pt, controls]
+                  {10}{figures/BDRT/BDRT_}{001}{021}
+\end{figure}
+\end{column}
+\end{columns}
+\begin{center}
+{ \small
+see C. Gundlach, I. Hawke, and SJE, CQG \textbf{29} 015055 (2012)
+}
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Elasticity results}
+\begin{figure}
+  \animategraphics[width=0.8\textwidth, controls]
+                  {10}{figures/BDRT_2D/BDRT_2D}{001}{018}
+\end{figure}
+\begin{center}
+{ \small
+see C. Gundlach, I. Hawke, and SJE, CQG \textbf{29} 015055 (2012)
+}
+\addtocounter{framenumber}{-1}
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Elasticity results}
+\begin{figure}
+  \animategraphics[width=0.8\textwidth, controls]
+                  {10}{figures/RingRotor/RingRotor_}{001}{022}
+\end{figure}
+\begin{center}
+{ \small
+see C. Gundlach, I. Hawke, and SJE, CQG \textbf{29} 015055 (2012)
+}
+\addtocounter{framenumber}{-1}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Interfaces}
+\begin{frame}\frametitle{Interfaces}
+\begin{figure}
+	\includegraphics[height=0.45\textheight]{figures/interfaces.pdf}
+\end{figure}
+\begin{itemize}
+\item Separate grid into regions governed by different physical models
+\item Track the moving boundary using a \emph{level-set function}
+\item Apply appropriate boundary conditions
+\item Use approximate solution of multimaterial Riemann problem
+  to determine behavior at the boundary
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Interfaces}
+\begin{figure}
+	\includegraphics[height=0.45\textheight]{figures/LevelSet.pdf}
+\end{figure}
+\begin{itemize}
+\item Separate grid into regions governed by different physical models
+\item Track the moving boundary using a \emph{level-set function}
+\item Apply appropriate boundary conditions
+\item Use approximate solution of multimaterial Riemann problem
+  to determine behavior at the boundary
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Interfaces: What happens at the interface?}
+\begin{columns}[c]
+\begin{column}{0.38\textwidth}
+\begin{figure}
+	\includegraphics[width=0.9\textwidth]
+                        {figures/method.pdf}
+\end{figure}
+\end{column}
+\begin{column}{0.62\textwidth}
+Ghost fluid method:
+\begin{itemize}
+\item Continuous across contact: $p$, $v^{(n)}$
+\item Discontinuous across contact: $s$, $v^{(t)}$
+\item Calculate $\rho$ from $s$ and $p$
+\end{itemize} 
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{Interfaces: What happens at the interface?}
+\begin{columns}[c]
+\begin{column}{0.38\textwidth}
+\begin{figure}
+	\includegraphics[width=\textwidth, trim=0pt -50pt 0pt -50pt]
+                        {figures/GFM_20130401.pdf}
+\end{figure}
+\end{column}
+\begin{column}{0.62\textwidth}
+Ghost fluid method:
+\begin{itemize}
+\item Continuous across contact: $p$, $v^{(n)}$
+\item Discontinuous across contact: $s$, $v^{(t)}$
+\item Calculate $\rho$ from $s$ and $p$
+\end{itemize} 
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{Interface results to date}
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item 1D solid-solid, solid-fluid, solid-vacuum for Newtonian and relativistic
+\item Moved to \emph{multimodel} code for 2D infrastructure
+\item 2D solid-solid Newtonian interfaces
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}
+  \animategraphics[width=\textwidth, controls]
+                  {10}{figures/Slip/Slip_}{001}{018}
+%  \includegraphics[width=0.8\textwidth]{BOD1_Scalars_1000}
+\label{fig:BOD1}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Starquake mechanisms}
+\begin{frame}\frametitle{Starquake mechanisms}
+\begin{columns}[c]
+\begin{column}{0.6\textwidth}
+\emph{Cracking}
+\begin{itemize}
+\item Material breaks and slips along a surface, handled using
+  interfaces (previous slide)
+\item Suppressed by pressure in NS?
+\end{itemize}
+\emph{Shattering}
+\begin{itemize}
+\item Instantaneous relaxation, matter-space metric
+  proportional to spacetime metric
+\item Suggested by molecular dynamics simulations
+%\item 2D homogeneous anisotropic initial data, then shatter a circular
+%  region at the center
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}
+  \animategraphics[width=\textwidth, trim=0pt 0pt 0pt 20pt, controls]
+                  {10}{figures/shatter/Shatter_}{000}{051}
+%	\includegraphics[width=\textwidth, trim=0pt 0pt 0pt 70pt]{Stress_Shatter2D.pdf}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Future work}
+
+\begin{frame}\frametitle{2D toy model}
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{figure}
+  \includegraphics[width=0.8\textwidth]{figures/toyfinal}
+\end{figure}
+\end{column}
+\begin{column}{0.6\textwidth}
+Technical aspects:
+\begin{itemize}
+\item Elasticity
+\item Interfaces
+\item Starquakes
+\item \textcolor{lightgray}{Stellar surface
+\item Well-balanced scheme in relativity}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{2D toy model}
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{figure}
+  \includegraphics[width=0.8\textwidth]{figures/toyfinal}
+\end{figure}
+\end{column}
+\begin{column}{0.6\textwidth}
+Technical aspects:
+\begin{itemize}
+\item \textcolor{lightgray}{Elasticity
+\item Interfaces
+\item Starquakes}
+\item Stellar surface
+\item Well-balanced scheme in relativity
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\end{document}
