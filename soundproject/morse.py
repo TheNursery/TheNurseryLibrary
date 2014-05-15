@@ -118,7 +118,7 @@ def writeMorse(output_string, debug=False, filename='morse_output.wav',
     amp = 0.5
 
     noise_output = wave.open(filename, 'w')
-    noise_output.setparams((2, 2, Fs, 0, 'NONE', 'not compressed'))
+    noise_output.setparams((1, 2, Fs, 0, 'NONE', 'not compressed'))
 
     my_morse = Morse(dot_length, frequency, Fs, amp)
 
@@ -132,7 +132,7 @@ def writeMorse(output_string, debug=False, filename='morse_output.wav',
 
 def playMorse(output_string, debug=False, frequency=450.0, dot_length=1000):
 
-    channels = 2
+    channels = 1
     sample_size = 2                     # bytes per sample
     frame_size = channels * sample_size # bytes per frame
     frame_rate = 44100                   # frames per second
@@ -143,7 +143,7 @@ def playMorse(output_string, debug=False, frequency=450.0, dot_length=1000):
 
     pcm = alsaaudio.PCM(alsaaudio.PCM_PLAYBACK)
     pcm.setchannels(channels)
-    pcm.setformat(alsaaudio.PCM_FORMAT_U8)
+    pcm.setformat(alsaaudio.PCM_FORMAT_S16_LE)
     pcm.setrate(frame_rate)
     pcm.setperiodsize(period_size)
 
