@@ -29,6 +29,7 @@ def sine_wave(freq):
     (nwaves, extra_bytes) = divmod(period_size * frame_size, len(wave_data))
     pcm.write((wave_data * nwaves) + wave_data[:extra_bytes])
 
-for i in range(10):
-    sine_wave(220)
-    sine_wave(440)
+if __name__ == "__main__":
+    for i in range(10):
+        sine_wave(220)
+        sine_wave(440)
