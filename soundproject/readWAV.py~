@@ -1,0 +1,14 @@
+import wave, struct
+from numpy import array                    
+
+def readWAV(fileN):
+  waveFile = wave.open(fileN, 'r')   
+  length = waveFile.getnframes()
+  outdata = []
+
+  for i in range(0, length):
+    waveData = waveFile.readframes(1)
+    data = struct.unpack('<h', waveData)
+    outdata.append(data)
+
+  return array(outdata)

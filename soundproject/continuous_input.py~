@@ -1,0 +1,15 @@
+from morse import writeMorse
+from morse_read import readMorse
+from time import time
+
+print 'Type text to be converted to morse code, and press enter: '
+
+wavfiles = []
+
+while True:
+    input_string = input(...>)
+    if (input_string == 'q'):
+        break
+    current_file = str(int(time()*100)) + '.wav'
+    fn = writeMorse(input_string, debug=False, filename=current_file)
+    wavfiles.append(fn)
