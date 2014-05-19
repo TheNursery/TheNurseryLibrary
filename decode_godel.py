@@ -27,7 +27,6 @@ def decode(integer, primelist):
             integer = integer / prime
             power = power + 1
         power_list.append(power)
-        power = 0
 
     return power_list
 
