@@ -72,13 +72,15 @@ for i in range (0,vnm):
       					
                         #godel numeration
 			for i in range(0,len(var)):
-        			semigodel.append(math.pow(prime[i],key_for_value(alphabet,letters[i])))
+        			semigodel.append(pow(prime[i],key_for_value(alphabet,letters[i])))
 	                     	
  			
 			g=reduce(lambda x, y: x * y, semigodel)
 			
+                        print g, str(g)
+
 			with open("test.txt", "a,r") as myfile:
-				 myfile.write(" {0}\n".format(g))
+				 myfile.write(str(g)+'\n')
 			  	 
 			del letters[:]
 			del semigodel[:]
