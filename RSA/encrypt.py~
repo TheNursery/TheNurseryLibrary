@@ -1,0 +1,9 @@
+
+def readKey(filename):
+    
+    pubfi = open(filename, 'r')
+    vals = pubfi.readline().split(' ')
+
+    print vals
+
+readKey('pub.key')

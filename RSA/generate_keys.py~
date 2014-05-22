@@ -1,0 +1,46 @@
+import random
+import fractions
+import gmpy
+
+def genKeys(p, q):
+
+    n = p*q
+
+    tot_n = (p-1)*(q-1)
+
+    e = tot_n/2
+
+    while fractions.gcd(e, tot_n) > 1:
+        if (e < tot_n/2):
+            e = e - 1
+            if e == 1:
+                e = tot_n / 2 + 1
+        else:
+            e = e + 1
+
+    d = gmpy.invert(e, tot_n)
+
+    public = (n, e)
+    private = (n, d, p, q)
+
+    return public, private
+
+def primes(highest):
+
+    prime_list = []
+
+    for num in range(2,highest):
+        if all(num%i != 0 for i in range(2,num)):
+            prime_list.append(num)     
+
+    return prime_list
+
+plist = primes(1000)
+
+ind1 = random.randint(1, len(plist))
+ind2 = random.randint(1, len(plist))
+
+p = plist[ind1]
+q = plist[ind2]
+
+print genKeys(p, q)
