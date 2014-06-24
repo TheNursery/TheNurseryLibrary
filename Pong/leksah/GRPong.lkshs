@@ -1,0 +1,20 @@
+Version of session file format:
+               1
+Time of storage:
+               "Mon Jun 23 16:18:11 BST 2014"
+Layout:        VerticalP (TerminalP {paneGroups = fromList [], paneTabs = Just TopP, currentPage = 2, detachedId = Nothing, detachedSize = Nothing}) (HorizontalP (TerminalP {paneGroups = fromList [("Debug",HorizontalP (TerminalP {paneGroups = fromList [], paneTabs = Nothing, currentPage = -1, detachedId = Nothing, detachedSize = Nothing}) (TerminalP {paneGroups = fromList [], paneTabs = Just TopP, currentPage = -1, detachedId = Nothing, detachedSize = Nothing}) 257)], paneTabs = Just TopP, currentPage = 1, detachedId = Nothing, detachedSize = Nothing}) (TerminalP {paneGroups = fromList [], paneTabs = Just TopP, currentPage = 1, detachedId = Nothing, detachedSize = Nothing}) 681) 1238
+Population:    [(Just (BufferSt (BufferState "/home/will/Programming/haskell_pong/leksah/PongServer/src/DataTypes.hs" 14)),[SplitP LeftP]),(Just (ErrorsSt ErrorsState),[SplitP RightP,SplitP TopP]),(Just (FilesSt FilesState),[SplitP RightP,SplitP TopP]),(Just (HLintSt HLintState),[SplitP RightP,SplitP TopP]),(Just (InfoSt (InfoState Nothing)),[SplitP RightP,SplitP BottomP]),(Just (LogSt LogState),[SplitP RightP,SplitP BottomP]),(Just (ModulesSt (ModulesState 200 (SystemScope,False) (Nothing,Nothing) (ExpanderState {packageExp = ([],[]), packageExpNoBlack = ([],[]), packageDExp = ([],[]), packageDExpNoBlack = ([],[]), workspaceExp = ([],[]), workspaceExpNoBlack = ([],[]), workspaceDExp = ([],[]), workspaceDExpNoBlack = ([],[]), systemExp = ([],[]), systemExpNoBlack = ([],[])}))),[SplitP RightP,SplitP TopP]),(Just (BufferSt (BufferState "/home/will/Programming/haskell_pong/leksah/PongServer/PongServer.cabal" 971)),[SplitP LeftP]),(Just (BufferSt (BufferState "/home/will/Programming/haskell_pong/leksah/PongServer/src/Server.hs" 3057)),[SplitP LeftP]),(Just (WorkspaceSt WorkspaceState),[SplitP RightP,SplitP BottomP])]
+Window size:   (1920,1025)
+Full screen:   False
+Dark:          False
+Completion size:
+               (750,400)
+Workspace:     Just "/home/will/Programming/haskell_pong/leksah/GRPong.lkshw"
+Active pane:   Just "Server.hs"
+Toolbar visible:
+               True
+FindbarState:  (True,FindState {entryStr = "", entryHist = [], replaceStr = "", replaceHist = [], caseSensitive = False, entireWord = False, wrapAround = False, regex = False, lineNr = 1})
+Recently opened files:
+               ["/home/will/Programming/haskell_pong/leksah/PongServer/src/hello.hs","/home/will/Programming/haskell_pong/leksah/PongServer/LICENSE","/home/will/Programming/haskell_pong/leksah/PongServer/src/Server.hs","/home/will/Programming/haskell_pong/leksah/PongServer/Setup.hs","/home/will/.leksah-0.13/leksah-welcome/src/Main.hs"]
+Recently opened workspaces:
+               ["/home/will/leksah.lkshw"]

@@ -1,0 +1,14 @@
+Version of workspace file format:
+               2
+Time of storage:
+               "Tue Jun 24 13:06:46 BST 2014"
+Name of the workspace:
+               "Pong"
+File paths of contained packages:
+               ["PongServer/PongServer.cabal"]
+Maybe file path of an active package:
+               Just "PongServer/PongServer.cabal"
+Maybe name of an active executable:
+               Nothing
+Version Control System configurations for packages:
+               fromList []

@@ -1,0 +1,42 @@
+name: PongServer
+version: 0.0.0.1
+cabal-version: >=1.6
+build-type: Simple
+license: MIT
+license-file: LICENSE
+copyright: (c) William Woodhead
+maintainer: William Woodhead <w.woodhead@soton.ac.uk>
+stability: alpha
+bug-reports: mailto:w.woodhead@soton.ac.uk
+synopsis: Hello World, an example package
+description: This is an implementation of the classic "Hello World" program in
+             Haskell, as an example of how to create a minimal Haskell
+             application using Cabal and Hackage.  Please submit any suggestions and
+             improvements.
+category: Game
+author: William Woodhead
+data-dir: ""
+
+source-repository head
+    type: git
+    location: http://darcs.haskell.org/hello/
+
+flag threaded
+    Default: True
+
+executable PongServer
+    build-depends:
+        base >=4.2 && <5,
+        websockets >=0.8.2.4 && <0.9,
+        containers ==0.5.0.0,
+        text ==0.11.3.1,
+        transformers >=0.3.0.0 && <0.4
+
+    if flag(threaded)
+        buildable: True
+        ghc-options: -threaded
+    main-is: Server.hs
+    buildable: True
+    hs-source-dirs: src
+    other-modules: DataTypes
+
