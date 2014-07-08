@@ -1,4 +1,4 @@
-#to each string the program assign a unique number given by a godel numeration. 
+        #to each string the program assign a unique number given by a godel numeration. 
 #The powers of the prime decomposition correspond to the keys in the dictionary alphabet. 
 #Example: the word "godel" has associated the string (7,15,4,5,12) given by the keys in the dictionary; and godel number given by g=2^{7}3^{15}5^{4}7^{5]11^{12}.
 
@@ -6,7 +6,10 @@
 
 import math
 import sys
+import numpy as np
 
+import random
+my_randoms = random.sample(xrange(100), 10)
 
 alphabet={1 : "a",
 2:"b",
@@ -36,10 +39,16 @@ alphabet={1 : "a",
 26:"z"}     
 
 
+
+noise = np.random.randint(0, 10000, size=10)
+
+
+
+
 prime=[]
-godel=[]
 letters=[]
 semigodel=[]
+godel=[]
 
 #return the key of a given value in the dictionary
 def key_for_value(alphabet, value):
@@ -49,11 +58,17 @@ def key_for_value(alphabet, value):
             return k
 
 
-    
-vnm= int(raw_input("Number of words: "))
 
-for i in range (0,vnm):
-	var = raw_input("Enter word: ")
+
+    
+vnm= raw_input("Enter words: ")
+
+
+words=vnm.split(" ")
+
+
+for i in range (0,len(words)):
+	var = words[i]
 	if var=='':
 	
 			sys.exit(0)
@@ -74,16 +89,27 @@ for i in range (0,vnm):
 			for i in range(0,len(var)):
         			semigodel.append(pow(prime[i],key_for_value(alphabet,letters[i])))
 	                     	
- 			
-			g=reduce(lambda x, y: x * y, semigodel)
-			
-                        print g, str(g)
 
-			with open("test.txt", "a,r") as myfile:
-				 myfile.write(str(g)+'\n')
-			  	 
-			del letters[:]
+		        g=reduce(lambda x, y: x * y, semigodel)
+			       
+                        godel.append(g)
+                        my_randoms = random.sample(xrange(100), 10)
+                        godel=my_randoms+ godel
+                        godel=godel+my_randoms
+                       
+                               
+                        
+                        del letters[:]
 			del semigodel[:]
+
+with open("test.txt", "a,r") as myfile:
+     
+myfile.write(str(godel)+'\n')
+			
+                          
+
+	
+print godel
 			
                         
 
