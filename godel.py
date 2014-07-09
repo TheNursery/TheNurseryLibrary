@@ -49,6 +49,7 @@ prime=[]
 letters=[]
 semigodel=[]
 godel=[]
+ruido=[]
 
 #return the key of a given value in the dictionary
 def key_for_value(alphabet, value):
@@ -57,8 +58,12 @@ def key_for_value(alphabet, value):
         if v == value:
             return k
 
+ 
+my_randoms = random.sample(xrange(1000000), 10)
 
-
+for i in range(10):
+	if (my_randoms[i]%2!=0):
+	        ruido.append(my_randoms[i])     
 
     
 vnm= raw_input("Enter words: ")
@@ -93,9 +98,8 @@ for i in range (0,len(words)):
 		        g=reduce(lambda x, y: x * y, semigodel)
 			       
                         godel.append(g)
-                        my_randoms = random.sample(xrange(100), 10)
-                        godel=my_randoms+ godel
-                        godel=godel+my_randoms
+                        
+                        godel=godel+ruido
                        
                                
                         
@@ -103,8 +107,7 @@ for i in range (0,len(words)):
 			del semigodel[:]
 
 with open("test.txt", "a,r") as myfile:
-     
-myfile.write(str(godel)+'\n')
+     myfile.write(str(godel)+'\n')
 			
                           
 
